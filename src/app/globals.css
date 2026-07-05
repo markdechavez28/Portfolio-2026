@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+
+  --color-ink: #0a0a0a;
+  --color-ink-muted: #8a8a8a;
+  --color-surface: #f3f3f1;
+  --color-line: #e7e7e4;
+  --color-blue: #3d4fe0;
+  --color-blue-foreground: #ffffff;
+  --color-mint: #cdeede;
+  --color-black: #0a0a0a;
+  --color-black-foreground: #f5f5f3;
+  --color-black-muted: #8a8a8a;
+
+  /* Solid CTA pills (bg-ink buttons) invert in dark mode instead of
+     just flipping ink, so button text stays legible either way. */
+  --color-accent: #0a0a0a;
+  --color-accent-foreground: #ffffff;
+  /* A card that needs to pop off of --color-surface (e.g. a stat callout
+     nested inside a surface panel). */
+  --color-elevated: #ffffff;
+
+  --placeholder-border: #c7c7c2;
+  --placeholder-tint: rgba(10, 10, 10, 0.04);
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f5f5f3;
+
+  --color-ink: #f5f5f3;
+  --color-ink-muted: #9a9a96;
+  --color-surface: #18181b;
+  --color-line: #2a2a2e;
+  --color-blue: #6d7cf5;
+  --color-blue-foreground: #ffffff;
+  --color-mint: #cdeede;
+  --color-black: #0a0a0a;
+  --color-black-foreground: #f5f5f3;
+  --color-black-muted: #8a8a8a;
+
+  --color-accent: #f5f5f3;
+  --color-accent-foreground: #0a0a0a;
+  --color-elevated: #1e1e22;
+
+  --placeholder-border: rgba(245, 245, 243, 0.3);
+  --placeholder-tint: rgba(245, 245, 243, 0.06);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-surface: var(--color-surface);
+  --color-line: var(--color-line);
+  --color-blue: var(--color-blue);
+  --color-blue-foreground: var(--color-blue-foreground);
+  --color-mint: var(--color-mint);
+  --color-black: var(--color-black);
+  --color-black-foreground: var(--color-black-foreground);
+  --color-black-muted: var(--color-black-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-elevated: var(--color-elevated);
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-geist-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.placeholder-box {
+  border: 1.5px dashed var(--placeholder-border);
+  background: repeating-linear-gradient(
+    135deg,
+    var(--placeholder-tint),
+    var(--placeholder-tint) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+.bleed-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  white-space: nowrap;
+}
+
+/* Abstract mesh-gradient placeholder. Stands in for the photography/render
+   slots in the reference layout until real assets are dropped in. Anchored
+   to --color-black (fixed dark regardless of theme) rather than --color-ink,
+   since --color-ink flips light/dark and would wash out the glow. */
+.gradient-mesh {
+  background:
+    radial-gradient(circle at 25% 25%, rgba(125, 211, 252, 0.6), transparent 60%),
+    radial-gradient(circle at 75% 45%, rgba(56, 189, 248, 0.5), transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(186, 230, 253, 0.35), transparent 60%),
+    var(--color-black);
+}
+
+.dot-pattern {
+  background-image: radial-gradient(rgba(245, 245, 243, 0.25) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Shared treatment for real project cover photos so mismatched source
+   images (different lighting, color casts) read as one consistent set. */
+.project-photo {
+  filter: grayscale(35%) saturate(1.2) contrast(1.05);
+}
+
+.project-photo-scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 10, 0.55) 0%,
+    rgba(10, 10, 10, 0.05) 45%,
+    rgba(61, 79, 224, 0.25) 100%
+  );
+}
