@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { skills } from "@/lib/data";
+import { ArrowLeftIcon, ArrowRightIcon } from "@/components/Icons";
 
 export default function Skills() {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -27,14 +28,14 @@ export default function Skills() {
             aria-label="Scroll left"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-surface text-ink transition-colors hover:bg-line"
           >
-            ←
+            <ArrowLeftIcon />
           </button>
           <button
             onClick={() => scrollBy(1)}
             aria-label="Scroll right"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-surface text-ink transition-colors hover:bg-line"
           >
-            →
+            <ArrowRightIcon />
           </button>
         </div>
       </div>

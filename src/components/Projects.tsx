@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { otherProjects, profile } from "@/lib/data";
+import { ArrowRightIcon, ArrowUpRightIcon } from "@/components/Icons";
 
 export default function Projects() {
   return (
@@ -15,9 +16,9 @@ export default function Projects() {
         </div>
         <a
           href="#work"
-          className="hidden text-xs uppercase tracking-wider text-ink underline md:inline-block"
+          className="hidden items-center gap-1.5 text-xs uppercase tracking-wider text-ink underline md:inline-flex"
         >
-          Explore →
+          Explore <ArrowRightIcon />
         </a>
       </div>
 
@@ -54,7 +55,7 @@ export default function Projects() {
                 aria-label={`View ${project.title}`}
                 className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-surface text-ink transition-colors group-hover:bg-line"
               >
-                ↗
+                <ArrowUpRightIcon />
               </a>
             )}
           </article>
@@ -68,17 +69,17 @@ export default function Projects() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-accent px-5 py-2.5 text-xs font-medium text-accent-foreground transition-opacity hover:opacity-85"
+            className="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-xs font-medium text-accent-foreground transition-opacity hover:opacity-85"
           >
-            GitHub ↗
+            GitHub <ArrowUpRightIcon />
           </a>
           <a
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-surface px-5 py-2.5 text-xs font-medium text-ink transition-colors hover:bg-line"
+            className="inline-flex items-center gap-1.5 rounded-full bg-surface px-5 py-2.5 text-xs font-medium text-ink transition-colors hover:bg-line"
           >
-            LinkedIn ↗
+            LinkedIn <ArrowUpRightIcon />
           </a>
         </div>
       </div>

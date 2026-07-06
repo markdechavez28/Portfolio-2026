@@ -1,5 +1,6 @@
 import { profile } from "@/lib/data";
 import NavPills from "@/components/NavPills";
+import { ArrowUpIcon } from "@/components/Icons";
 
 export default function Footer() {
   return (
@@ -55,7 +56,7 @@ export default function Footer() {
           © {new Date().getFullYear()} {profile.shortName}
         </span>
         <a href="#top" className="flex items-center gap-2 hover:text-black-foreground">
-          Back to Top ↑
+          Back to Top <ArrowUpIcon />
         </a>
       </div>
     </footer>

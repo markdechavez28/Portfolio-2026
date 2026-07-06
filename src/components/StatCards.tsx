@@ -1,4 +1,5 @@
 import { statCards } from "@/lib/data";
+import { ArrowUpRightIcon } from "@/components/Icons";
 
 const toneClasses: Record<(typeof statCards)[number]["tone"], string> = {
   blue: "bg-blue text-blue-foreground",
@@ -24,8 +25,8 @@ export default function StatCards() {
                 {card.label}
               </p>
             </div>
-            <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-ink/10 text-sm">
-              ↗
+            <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-ink/10">
+              <ArrowUpRightIcon />
             </span>
           </div>
         ))}

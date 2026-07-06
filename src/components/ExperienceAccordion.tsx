@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { experiences } from "@/lib/data";
+import { ArrowUpRightIcon } from "@/components/Icons";
 
 export default function ExperienceAccordion() {
   const [openIndexes, setOpenIndexes] = useState<number[]>(
@@ -54,9 +55,9 @@ export default function ExperienceAccordion() {
                   </span>
                 </span>
                 <span
-                  className={`text-xl text-ink transition-transform ${isOpen ? "rotate-45" : ""}`}
+                  className={`text-ink transition-transform ${isOpen ? "rotate-45" : ""}`}
                 >
-                  ↗
+                  <ArrowUpRightIcon className="h-5 w-5" />
                 </span>
               </button>
 

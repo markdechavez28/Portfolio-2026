@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { featuredProjects } from "@/lib/data";
+import { ArrowLeftIcon, ArrowRightIcon } from "@/components/Icons";
 
 export default function ProjectSpotlight() {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -38,14 +39,14 @@ export default function ProjectSpotlight() {
             aria-label="Previous project"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-surface text-ink transition-colors hover:bg-line"
           >
-            ←
+            <ArrowLeftIcon />
           </button>
           <button
             onClick={() => cycle(1)}
             aria-label="Next project"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-surface text-ink transition-colors hover:bg-line"
           >
-            →
+            <ArrowRightIcon />
           </button>
         </div>
       </div>
@@ -96,9 +97,9 @@ export default function ProjectSpotlight() {
               {project.link && (
                 <a
                   href={project.link}
-                  className="mt-6 inline-block rounded-full bg-accent px-5 py-2.5 text-xs font-medium text-accent-foreground"
+                  className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-xs font-medium text-accent-foreground"
                 >
-                  Explore More →
+                  Explore More <ArrowRightIcon />
                 </a>
               )}
             </div>

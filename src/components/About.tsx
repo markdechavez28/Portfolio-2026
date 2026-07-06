@@ -1,4 +1,5 @@
 import { pillars } from "@/lib/data";
+import { ArrowRightIcon } from "@/components/Icons";
 
 export default function About() {
   return (
@@ -18,9 +19,9 @@ export default function About() {
             </h2>
             <a
               href="#experience"
-              className="mt-6 inline-block rounded-full bg-accent px-5 py-2.5 text-xs font-medium text-accent-foreground"
+              className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-xs font-medium text-accent-foreground"
             >
-              Explore the work →
+              Explore the work <ArrowRightIcon />
             </a>
           </div>
 
