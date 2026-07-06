@@ -1,20 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { MoonIcon, SunIcon } from "@/components/Icons";
 
-export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
+function subscribe(callback: () => void) {
+  const observer = new MutationObserver(callback);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  return () => observer.disconnect();
+}
 
-  useEffect(() => {
-    setIsDark(document.documentElement.classList.contains("dark"));
-    setMounted(true);
-  }, []);
+function getSnapshot() {
+  return document.documentElement.classList.contains("dark");
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
+export default function ThemeToggle() {
+  const isDark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const toggle = () => {
     const next = !isDark;
-    setIsDark(next);
     document.documentElement.classList.toggle("dark", next);
     localStorage.setItem("theme", next ? "dark" : "light");
   };
@@ -25,7 +35,7 @@ export default function ThemeToggle() {
       aria-label="Toggle dark mode"
       className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-surface text-ink transition-colors hover:bg-line"
     >
-      {mounted && isDark ? <SunIcon /> : <MoonIcon />}
+      {isDark ? <SunIcon /> : <MoonIcon />}
     </button>
   );
 }
